@@ -3,5 +3,7 @@
   hosts: all
   connection: local
   become: true
+  vars:
+    banner_text: "Molecule Test"
   roles:
     - role: "infra_monkey.motd"
