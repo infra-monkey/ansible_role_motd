@@ -30,17 +30,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install dependencies for debian
-        if: ${{ matrix.distro == 'debian9' || matrix.distro == 'debian10' }}
+      - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install ansible molecule[docker] docker
-      
-      - name: Install dependencies for centos
-        if: ${{ matrix.distro == 'centos7' || matrix.distro == 'centos8' }}
-        run: |
-          sudo ls -lR /etc/ssh
-          python3 -m pip install --upgrade pip
           python3 -m pip install ansible molecule[docker] docker
       - name: Test with molecule
         env:

@@ -16,7 +16,9 @@
 - name: "Configure sshd to display the home banner"
   ansible.builtin.lineinfile:
     path: "/etc/ssh/sshd_config"
+    regexp: "^Banner"
     line: "Banner /etc/home_banner"
+    create: true
     state: present
 - name: "Copy motd script in profile"
   ansible.builtin.copy:
