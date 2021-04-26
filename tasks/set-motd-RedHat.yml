@@ -6,6 +6,7 @@
 - name: "Generate banner text"
   ansible.builtin.command: 'figlet "{{ banner_text }}"'
   register: banner_out
+  changed_when: false
 - name: "Copy the banner on redhat"
   ansible.builtin.copy:
     content: "{{ banner_out.stdout }}\n"
