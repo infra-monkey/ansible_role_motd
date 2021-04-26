@@ -1,8 +1,8 @@
 ---
 - name: "Include set motd task RedHat"
   include_tasks: set-motd-RedHat.yml
-  when: is_managed_by_ansible and ansible_distribution_file_variety == "RedHat"
+  when: ansible_distribution_file_variety == "RedHat"
 - name: "Include set motd task for Debian"
   include_tasks: set-motd-Debian.yml
-  when: is_managed_by_ansible and ansible_distribution_file_variety == "Debian"
+  when: ansible_distribution_file_variety == "Debian"
 ...
