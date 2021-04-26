@@ -31,13 +31,13 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies for debian
-        if: ${{ matrix.distro }} == debian9 or ${{ matrix.distro }} == debian10
+        if: ${{ matrix.distro == 'debian9' || matrix.distro == 'debian10' }}
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install ansible molecule[docker] docker
       
       - name: Install dependencies for centos
-        if: ${{ matrix.distro }} == centos7 or ${{ matrix.distro }} == centos8
+        if: ${{ matrix.distro == 'centos7' || matrix.distro == 'centos8' }}
         run: |
           yum install -y openssh-server
           python3 -m pip install --upgrade pip
