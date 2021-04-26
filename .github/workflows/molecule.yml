@@ -39,8 +39,7 @@ jobs:
       - name: Install dependencies for centos
         if: ${{ matrix.distro == 'centos7' || matrix.distro == 'centos8' }}
         run: |
-          sudo mkdir -p /etc/ssh
-          sudo touch /etc/ssh/sshd_config
+          sudo ls -lR /etc/ssh
           python3 -m pip install --upgrade pip
           python3 -m pip install ansible molecule[docker] docker
       - name: Test with molecule
