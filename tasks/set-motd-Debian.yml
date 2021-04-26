@@ -1,0 +1,25 @@
+---
+- name: "Install figlet dependency"
+  ansible.builtin.package:
+    name: "figlet"
+    state: present
+- name: "Copy the banner on debian"
+  ansible.builtin.copy:
+    content: ""
+    dest: "/etc/motd"
+    mode: '0644'
+- name: "Copy the banner on debian"
+  ansible.builtin.template:
+    src: "banner.j2"
+    dest: "/etc/update-motd.d/00-banner"
+    mode: '0755'
+- name: "Copy motd script in update.motd.d on debian"
+  ansible.builtin.copy:
+    src: "motd.sh"
+    dest: "/etc/update-motd.d/01-display-facts"
+    mode: '0755'
+- name: "Ensure uname is not displayed"
+  ansible.builtin.file:
+    path: "/etc/update-motd.d/10-uname"
+    state: absent
+...

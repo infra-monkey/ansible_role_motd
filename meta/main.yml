@@ -1,9 +1,9 @@
 ---
 galaxy_info:
-  role_name: role_name
+  role_name: motd
   namespace: infra_monkey
   author: Antoine Gatineau
-  description: Role description
+  description: Configure motd based on host-info facts
   company: Infra-Monkey
   license: Apache-2.0
   min_ansible_version: 2.10

@@ -1,0 +1,37 @@
+---
+- name: "Install figlet dependency"
+  ansible.builtin.package:
+    name: "figlet"
+    state: present
+- name: "Generate banner text"
+  ansible.builtin.command: 'figlet "{{ banner_text }}"'
+  register: banner_out
+  changed_when: false
+- name: "Copy the banner on redhat"
+  ansible.builtin.copy:
+    content: "{{ banner_out.stdout }}\n"
+    dest: "/etc/home_banner"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+- name: "Configure sshd to display the home banner"
+  ansible.builtin.lineinfile:
+    path: "/etc/ssh/sshd_config"
+    regexp: "^Banner"
+    line: "Banner /etc/home_banner"
+    create: true
+    state: present
+- name: "Copy motd script in profile"
+  ansible.builtin.copy:
+    src: "motd.sh"
+    dest: "/etc/profile.d/motd.sh"
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+- name: "Restart sshd"
+  ansible.builtin.service:
+    name: "sshd"
+    state: restarted
+    enabled: true
+  when: ssh_enabled
+...

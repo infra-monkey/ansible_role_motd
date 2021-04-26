@@ -3,5 +3,8 @@
   hosts: all
   connection: local
   become: true
+  vars:
+    banner_text: "Molecule Test"
+    ssh_enabled: false
   roles:
-    - role: "infra_monkey.role_name"
+    - role: "infra_monkey.motd"
