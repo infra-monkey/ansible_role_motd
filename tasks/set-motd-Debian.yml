@@ -1,5 +1,8 @@
 ---
 - name: "Install figlet dependency"
+  ansible.builtin.apt:
+    update_cache: true
+- name: "Install figlet dependency"
   ansible.builtin.package:
     name: "figlet"
     state: present
