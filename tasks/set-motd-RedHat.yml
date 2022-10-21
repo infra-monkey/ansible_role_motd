@@ -21,6 +21,9 @@
     line: "Banner /etc/home_banner"
     create: true
     state: present
+    owner: 'root'
+    group: 'root'
+    mode: '0600'
 - name: "Copy motd script in profile"
   ansible.builtin.copy:
     src: "motd.sh"
