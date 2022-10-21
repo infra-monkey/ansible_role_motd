@@ -1,8 +1,7 @@
 ---
 - name: "Include set motd task RedHat"
-  include_tasks: set-motd-RedHat.yml
+  ansible.builtin.include_tasks: set-motd-RedHat.yml
   when: ansible_os_family == "RedHat"
 - name: "Include set motd task for Debian"
-  include_tasks: set-motd-Debian.yml
+  ansible.builtin.include_tasks: set-motd-Debian.yml
   when: ansible_os_family == "Debian"
-...

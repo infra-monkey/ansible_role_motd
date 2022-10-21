@@ -34,4 +34,3 @@
     state: restarted
     enabled: true
   when: ssh_enabled
-...
