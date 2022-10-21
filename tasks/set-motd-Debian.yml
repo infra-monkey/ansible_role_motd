@@ -25,4 +25,3 @@
   ansible.builtin.file:
     path: "/etc/update-motd.d/10-uname"
     state: absent
-...
