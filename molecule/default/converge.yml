@@ -1,10 +1,11 @@
 ---
 - name: Converge
   hosts: all
-  connection: local
-  become: true
+  become: yes
+  gather_facts: yes
   vars:
     banner_text: "Molecule Test"
     ssh_enabled: false
+
   roles:
-    - role: "infra_monkey.motd"
+    - role: ansible_role_motd
